@@ -74,6 +74,9 @@ Blockly.Xml.blockToDom = function(block, ignoreChildBlocks) {
       if (title.config) {
         container.setAttribute('config', title.config);
       }
+      if (title.id) {
+        container.setAttribute('id', title.id);
+      }
       element.appendChild(container);
     }
   }
@@ -447,7 +450,7 @@ Blockly.Xml.domToBlock = function(blockSpace, xmlBlock) {
         if (config) {
           block.setFieldConfig(name, config);
         }
-        block.setTitleValue(xmlChild.textContent, name);
+        block.setTitleValue(xmlChild.textContent, name, xmlChild.id);
         break;
       case 'value':
         if (!input) {

@@ -28,9 +28,13 @@ goog.provide('Blockly.JavaScript.procedures');
 goog.require('Blockly.JavaScript');
 
 Blockly.JavaScript.procedures_defreturn = function() {
+  var id = this.getTitle_('NAME').id;
+  // console.log(id);
+  var titleValue = this.getTitleValue('NAME');
+  // console.log(titleValue);
   // Define a procedure with a return value.
   var funcName = Blockly.JavaScript.variableDB_.getName(
-    this.getTitleValue('NAME'),
+    id || titleValue,
     Blockly.Procedures.NAME_TYPE
   );
   // Store names for each of the args

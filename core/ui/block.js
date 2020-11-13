@@ -2273,15 +2273,21 @@ Blockly.Block.prototype.getTitleValue = function(name) {
  * @param {string} newValue Value to be the new title.
  * @param {string} name The name of the title.
  */
-Blockly.Block.prototype.setTitleValue = function(newValue, name) {
+Blockly.Block.prototype.setTitleValue = function(newValue, name, opt_id) {
   var title = this.getTitle_(name);
   if (title) {
     title.setValue(newValue);
+    if (opt_id) {
+      title.id = opt_id;
+    }
   } else {
-    this.appendDummyInput().appendTitle(
+    title = this.appendDummyInput().appendTitle(
       new Blockly.FieldTextInput(newValue),
       name
     );
+    if (opt_id) {
+      title.id = opt_id;
+    }
     console.warn('Unknown title: "' + name + '" not found.');
   }
 };
